@@ -9,7 +9,7 @@ Este documento define el flujo obligatorio para desarrollar, versionar y despleg
 | `main` | Producción. **No commitear directo.** | Production (deploy automático al mergear) |
 | `dev` | Integración diaria. Rama de trabajo habitual. | Preview opcional (según configuración del proyecto) |
 
-Ambas ramas deben existir en el remoto `origin` (GitHub: `mauricioabh/labby-dabby`).
+Ambas ramas deben existir en el remoto `origin` (GitHub: [mauricioabh/labby-dabby](https://github.com/mauricioabh/labby-dabby)).
 
 ## Flujo diario (resumen)
 
