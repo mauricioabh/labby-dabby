@@ -101,11 +101,12 @@ vercel env add NOMBRE_VAR production
 
 ## 7. Vercel (monorepo)
 
-- **Repositorio:** GitHub `labby-dabby`
-- **Root Directory:** `apps/web`
-- **Install:** `npm install` (desde la raíz del monorepo en el dashboard, o `cd ../.. && npm install` en `vercel.json`)
-- **Build:** `npm run build --workspace=web` (desde raíz) o el script definido en el proyecto Vercel
-- **Production Branch:** `main`
+- **Repositorio:** GitHub [labby-dabby](https://github.com/mauricioabh/labby-dabby)
+- **Proyecto Vercel:** `labby-dabby` (conectado vía `vercel git connect`)
+- **Build desde la raíz del repo:** `vercel.json` en la raíz define `npm install` y `npm run build --workspace=web`
+- **Build local / CLI desde `apps/web`:** `apps/web/vercel.json` con rutas `cd ../..`
+- **Production Branch:** `main` (deploy automático al mergear PR `dev` → `main`)
+- **URL producción:** https://labby-dabby.vercel.app (ajusta `NEXT_PUBLIC_APP_URL` en Vercel si usas otro dominio)
 
 ## 8. Onboarding del proyecto (una sola vez)
 
