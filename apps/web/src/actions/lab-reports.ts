@@ -5,7 +5,6 @@ import { revalidatePath } from 'next/cache';
 import { db } from '@/db';
 import { labReports } from '@/db/schema';
 import { eq, and, desc } from 'drizzle-orm';
-import { extractTextFromPdfUrl } from '@/lib/pdf';
 import { analyzeLabReport } from '@/lib/gemini';
 import { sendLabReportEmail } from '@/lib/resend';
 import { ensureUserInDatabase } from '@/lib/ensure-user-in-db';
@@ -27,6 +26,7 @@ export async function processLabReportUpload(
   await ensureUserInDatabase();
 
   try {
+    const { extractTextFromPdfUrl } = await import('@/lib/pdf');
     const extractedText = await extractTextFromPdfUrl(fileUrl);
     if (!extractedText?.trim()) {
       return {
