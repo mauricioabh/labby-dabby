@@ -103,8 +103,10 @@ vercel env add NOMBRE_VAR production
 
 - **Repositorio:** GitHub [labby-dabby](https://github.com/mauricioabh/labby-dabby)
 - **Proyecto Vercel:** `labby-dabby` (conectado vía `vercel git connect`)
-- **Build desde la raíz del repo:** `vercel.json` en la raíz define `npm install` y `npm run build --workspace=web`
-- **Build local / CLI desde `apps/web`:** `apps/web/vercel.json` con rutas `cd ../..`
+- **Root Directory (recomendado):** `apps/web` en Vercel → Settings → General → Root Directory
+- **Build local:** `npm run build --workspace=web` desde la raíz (genera `apps/web/.next`)
+- **Deploy con Root Directory en la raíz del repo:** `vercel.json` en la raíz ejecuta el build del workspace y copia `apps/web/.next` → `.next` (evita el error `output directory ".next" was not found`)
+- **CLI desde `apps/web`:** `apps/web/vercel.json` usa `cd ../..` para install/build (solo con Root Directory = `apps/web`)
 - **Production Branch:** `main` (deploy automático al mergear PR `dev` → `main`)
 - **URL producción:** https://labby-dabby.vercel.app (ajusta `NEXT_PUBLIC_APP_URL` en Vercel si usas otro dominio)
 
