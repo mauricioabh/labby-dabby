@@ -17,11 +17,14 @@ Si termina sin errores, el código compila. El artefacto queda en `apps/web/.nex
 2. **Settings → General → Root Directory** → escribe `apps/web` → **Save**.
 3. **Settings → General → Build & Development Settings**
    - Framework Preset: **Next.js**
-   - Deja que `apps/web/vercel.json` defina install/build, o usa:
-     - Install Command: `cd ../.. && npm install`
-     - Build Command: `cd ../.. && npm run build --workspace=web`
+   - **No** uses `cp -r apps/web/.next .next` en el Build Command (provoca errores como `ENOENT ... client-only`).
+   - Install Command: `cd ../.. && npm install`
+   - Build Command: `cd ../.. && npm run build --workspace=web`
+   - (O deja vacío para que aplique `apps/web/vercel.json`.)
 4. **Settings → Git → Production Branch:** `main`
 5. Variables de entorno: ver [ENV.md](./ENV.md) (Production y Preview).
+
+`apps/web/next.config.ts` define `outputFileTracingRoot` hacia la raíz del monorepo para que el empaquetado encuentre dependencias hoisteadas (`client-only`, etc.).
 
 ## Por qué falla `.next was not found`
 
