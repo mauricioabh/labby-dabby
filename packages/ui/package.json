@@ -1,0 +1,26 @@
+{
+  "name": "@labby-dabby/ui",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./tokens/index.ts",
+  "types": "./tokens/index.ts",
+  "exports": {
+    ".": {
+      "types": "./tokens/index.ts",
+      "import": "./tokens/index.ts",
+      "require": "./tokens/index.ts"
+    },
+    "./tokens": {
+      "types": "./tokens/index.ts",
+      "import": "./tokens/index.ts",
+      "require": "./tokens/index.ts"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

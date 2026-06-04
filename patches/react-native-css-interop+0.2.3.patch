@@ -1,0 +1,26 @@
+diff --git a/node_modules/react-native-css-interop/dist/metro/index.js b/node_modules/react-native-css-interop/dist/metro/index.js
+index c91ba6adf049dd5c6eec1ec8301ecc0802f41bfc..49ba110cb3aae34a4ed1adc041487a2c16132750 100644
+--- a/node_modules/react-native-css-interop/dist/metro/index.js
++++ b/node_modules/react-native-css-interop/dist/metro/index.js
+@@ -198,7 +198,20 @@ async function startCSSProcessor(filePath, platform, isDev, { input, getCSSForPl
+     }
+ }
+ function ensureFileSystemPatched(fs) {
+-    if (!fs.getSha1.__css_interop_patched) {
++    if (!fs) return fs;
++    // Metro 0.82+ uses getOrComputeSha1 (async) instead of getSha1 (sync)
++    if (typeof fs.getOrComputeSha1 === 'function') {
++        if (fs.getOrComputeSha1.__css_interop_patched) return fs;
++        const original = fs.getOrComputeSha1.bind(fs);
++        fs.getOrComputeSha1 = (filename) => {
++            if (virtualModules.has(filename)) {
++                return Promise.resolve({ sha1: `${filename}-${Date.now()}` });
++            }
++            return original(filename);
++        };
++        fs.getOrComputeSha1.__css_interop_patched = true;
++    } else if (typeof fs.getSha1 === 'function') {
++        if (fs.getSha1.__css_interop_patched) return fs;
+         const original_getSha1 = fs.getSha1.bind(fs);
+         fs.getSha1 = (filename) => {
+             if (virtualModules.has(filename)) {

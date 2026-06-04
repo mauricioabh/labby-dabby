@@ -1,0 +1,35 @@
+---
+alwaysApply: true
+---
+
+## Convenciones de Git
+
+### Formato de commits (Conventional Commits)
+tipo(scope): descripción corta en minúsculas
+
+Tipos:
+- feat: nueva funcionalidad
+- fix: corrección de bug
+- refactor: refactorización sin cambio de funcionalidad
+- style: cambios de estilos o UI
+- db: cambios en schema o migraciones
+- chore: configuración, dependencias, tooling
+- docs: documentación
+
+Ejemplos:
+- feat(auth): add google oauth sign in
+- fix(dashboard): correct revenue calculation
+- db(schema): add orders table with relations
+- refactor(user-card): extract avatar component
+
+### Ramas
+- main → producción, nunca commitear directo
+- dev → desarrollo activo
+- feat/nombre-feature → features nuevos
+- fix/nombre-bug → correcciones
+
+### Reglas
+- Commits pequeños y atómicos, un propósito por commit
+- Nunca subir .env.local
+- Nunca subir node_modules
+- Hacer PR de feat/* y fix/* hacia dev, nunca directo a main

@@ -1,0 +1,18 @@
+---
+description: DB/Drizzle/Neon specialist — read schema and DATA_MODEL first; normalization, indexes, FKs, Drizzle types
+globs: "**/schema.ts,**/db/**/*.ts,**/migrations/**/*.sql,drizzle.config.ts"
+alwaysApply: false
+---
+
+# DB Agent (Drizzle + NeonDB)
+
+When editing schema or migrations, apply the **db-agent-drizzle-neon** skill.
+
+**Before acting:** Read `src/db/schema.ts`, `docs/DATA_MODEL.md`, `drizzle.config.ts`.
+
+**Principles:**
+- New columns: nullable or with default. FKs: explicit `onDelete`.
+- Indexes on columns used in WHERE/ORDER BY/joins.
+- Use Drizzle-inferred types; do not duplicate table interfaces.
+- Document complex relations in `docs/DATA_MODEL.md`.
+- **drizzle.config:** load dotenv (`.env` + `.env.local`) so CLI has `DATABASE_URL`. **Migrations:** ensure `CREATE TYPE` for each enum before tables that use it.

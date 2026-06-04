@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="og-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </linearGradient>
+    <linearGradient id="og-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#og-bg)"/>
+  <!-- Isotipo centrado grande -->
+  <g transform="translate(500, 180)">
+    <path d="M100 25c-3.2 0-6.2 1.9-8.6 5C87 36.2 75 55 75 75c0 13.8 11.2 25 25 25s25-11.2 25-25c0-18.8-12.5-36.7-16.4-41.9C106.2 26.9 103.2 25 100 25z" fill="url(#og-grad)"/>
+    <path d="M88 55v62h12V72h18v-12H88z" fill="#f8fafc"/>
+  </g>
+  <!-- Nombre -->
+  <text x="600" y="340" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="700" fill="#0f172a">Labby-dabby</text>
+  <!-- Tagline -->
+  <text x="600" y="400" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#64748b">AI-powered lab report analysis for patients</text>
+</svg>

@@ -1,0 +1,60 @@
+---
+description: Contexto completo del proyecto Labby-dabby para sesiones de IA
+globs: 
+alwaysApply: true
+---
+
+# Labby-dabby — Proyecto
+
+## Qué es
+
+Aplicación full-stack de IA que ayuda a pacientes a entender sus informes de laboratorio. Web (Next.js) + Mobile (Expo) en monorepo Turborepo.
+
+## Stack
+
+- **Package manager:** npm (workspaces)
+- **Web:** Next.js 16, TypeScript, Tailwind, shadcn/ui (components/ui), Clerk, NeonDB, Drizzle, Vercel
+- **Mobile:** Expo **SDK 54** (compatible con Expo Go SDK 54), Expo Router, NativeWind, @clerk/clerk-expo
+- **Compartido:** packages/types, packages/utils
+- **IA:** Google Gemini (@google/generative-ai)
+- **Archivos:** Uploadthing
+- **Email:** Resend
+
+## Notas operativas (mobile / Expo)
+
+- **Compatibilidad Expo Go:** Expo Go suele soportar solo el SDK actual (y a veces el anterior). Si aparece “Project is incompatible with this version of Expo Go”, hay que alinear `apps/mobile` al SDK que tenga instalado Expo Go.
+- **Workaround CLI (Windows / undici):** si `expo start` falla con `TypeError: Body is unusable: Body has already been read`, ejecutar con `EXPO_NO_CACHE=1` (en este repo ya se usa vía `cross-env` en los scripts de `apps/mobile`).
+
+## Estructura
+
+```
+apps/web/     → Next.js, DB, API Routes, Server Actions, components/ui (shadcn)
+apps/mobile/  → Expo, consume API de web, NativeWind + @labby-dabby/ui tokens
+packages/types, packages/utils, packages/ui (design tokens)
+```
+
+## Entidades principales
+
+- users (sync Clerk)
+- lab_reports (PDF, análisis IA, status: normal|abnormal|critical)
+- report_shares (compartir con token)
+- notes (título, contenido, tags)
+- chat_messages (historial chatbot)
+
+## Rutas clave
+
+- /dashboard, /lab-reports, /lab-reports/[id], /ai-chatbot, /notes
+- /share/[token] (público, solo lectura)
+- Auth: Clerk con Google OAuth + email/password
+
+## Convenciones
+
+- Conventional Commits: feat, fix, refactor, db, chore, docs
+- Ramas: main, dev, feat/*, fix/*
+- TypeScript estricto, Zod para validación, auth con Clerk antes de mutaciones
+- Mobile NUNCA toca DB; consume API de web
+
+## Env vars
+
+- Web: DATABASE_URL, CLERK_*, UPLOADTHING_*, RESEND_API_KEY, GOOGLE_GENERATIVE_AI_API_KEY, NEXT_PUBLIC_APP_URL
+- Mobile: EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY, EXPO_PUBLIC_API_URL

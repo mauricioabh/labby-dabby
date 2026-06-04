@@ -1,0 +1,87 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build outputs
+.next
+dist
+.expo
+*.tsbuildinfo
+
+# MCP config con keys (usar mcp.example.json como referencia)
+.cursor/mcp.json
+
+# Env (nunca subir a GitHub)
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.test
+.env*.local
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Testing
+coverage
+.nyc_output
+playwright-report
+test-results
+
+# Turbo
+.turbo
+
+# Sentry
+.sentryclirc
+
+# Credenciales / llaves / certificados
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.der
+**/id_rsa
+**/id_ed25519
+**/credentials.json
+**/*service-account*.json
+**/google-credentials*.json
+.aws/
+
+# Vercel
+.vercel
+
+# Expo / EAS
+*.mobileprovision
+
+# DB dumps (si exportas Neon/Postgres)
+*.sql
+*.dump
+*.bak
+
+# Copia de lockfile para Next.js (monorepo npm)
+apps/web/package-lock.json
+
+# Assets generados (se regeneran con npm run generate-assets)
+apps/web/public/favicon.ico
+apps/web/public/favicon-*.png
+apps/web/public/apple-touch-icon.png
+apps/web/public/og-image.png
+apps/mobile/assets/icon.png
+apps/mobile/assets/adaptive-icon.png
+apps/mobile/assets/splash-icon.png

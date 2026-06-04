@@ -1,0 +1,26 @@
+# Env files (secrets — nunca indexar)
+**/.env
+**/.env.*
+**/*.env
+**/*.env.*
+
+# Credenciales / llaves / certificados
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+**/*.crt
+**/*.cer
+**/*.der
+**/id_rsa
+**/id_ed25519
+**/credentials.json
+**/*service-account*.json
+**/google-credentials*.json
+**/.aws/
+
+# Vercel
+.vercel/
+
+# Sentry
+.sentryclirc

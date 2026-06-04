@@ -1,0 +1,54 @@
+{
+  "name": "labby-dabby",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "web": "npm run dev --workspace=web",
+    "mobile": "npm run start --prefix apps/mobile",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "test": "turbo test",
+    "clean": "turbo clean",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "release": "changelogen --release",
+    "changelog": "changelogen",
+    "generate-assets": "tsx scripts/generate-assets.ts",
+    "seed:dev-user": "tsx scripts/seed-dev-user.ts",
+    "postinstall": "patch-package && node -e \"require('fs').copyFileSync('package-lock.json', 'apps/web/package-lock.json')\""
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@fission-ai/openspec": "^1.2.0",
+    "changelogen": "^0.6.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
+    "patch-package": "^8.0.0",
+    "prettier": "^3.8.1",
+    "sharp": "^0.34.5",
+    "to-ico": "^1.1.5",
+    "tsx": "^4.21.0",
+    "turbo": "^2.8.17"
+  },
+  "overrides": {
+    "tailwindcss": "^3.4.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "npm@10.8.2"
+}
