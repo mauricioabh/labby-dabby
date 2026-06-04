@@ -137,8 +137,7 @@ export default function HomePage() {
               <p className="mx-auto mt-lg max-w-2xl text-center text-lg text-muted-foreground">
                 Labby-dabby reads your lab report and turns it into a clear, personalized
                 summary. You see what&apos;s in range, what isn&apos;t, and what it means in
-                plain language—so you can have better conversations with your doctor and
-                less stress.
+                plain language—so you can talk to your doctor with confidence and less stress.
               </p>
             </Reveal>
             <div className="mt-xl flex justify-center">
